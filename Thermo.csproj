@@ -51,6 +51,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include=".git\ms-persist.xml" />
+    <Content Include="desc.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".git\COMMIT_EDITMSG" />
