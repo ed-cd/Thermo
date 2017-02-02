@@ -8,8 +8,11 @@ namespace Thermo
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
+            Console.WriteLine(Test());
+
+            (int A, int B) Test() => (1, 2);
         }
     }
 }
