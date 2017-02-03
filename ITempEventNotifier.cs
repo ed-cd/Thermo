@@ -4,6 +4,6 @@ namespace Thermo
 {
     public interface ITempEventNotifier
     {
-        Action<Temp> OnTempChanged { get; set; }
+        Action<Temperature> OnTempChanged { get; set; }
     }
 }

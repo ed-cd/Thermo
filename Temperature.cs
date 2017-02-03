@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Thermo
 {
-    public class Temp
+    public class Temperature
     {
         public enum TempType
         {
@@ -16,7 +16,7 @@ namespace Thermo
 
         private readonly TempType tt;
 
-        public Temp(TempType tt, double value)
+        public Temperature(TempType tt, double value)
         {
             this.tt = tt;
             Value = value;
@@ -54,30 +54,32 @@ namespace Thermo
             }
         }
 
-        public static bool operator ==(Temp t1, Temp t2)
+        public static bool operator ==(Temperature t1, Temperature t2)
         {
-            return t1 != null && t2 != null && Math.Abs(t1.value) - Math.Abs(t2.Value) < 0.001;
-                //good enough epsilon for temperature
+            if (ReferenceEquals(t1, null) && ReferenceEquals(t2, null)) return true;
+            if (ReferenceEquals(t1, null) || ReferenceEquals(t2, null)) return false;
+            return Math.Abs(Math.Abs(t1.value) - Math.Abs(t2.Value)) < 0.001;
+            //good enough epsilon for temperature
         }
 
-        public static bool operator !=(Temp t1, Temp t2)
+        public static bool operator !=(Temperature t1, Temperature t2)
         {
             return !(t1 == t2);
         }
 
-        public static bool operator >(Temp t1, Temp t2)
+        public static bool operator >(Temperature t1, Temperature t2)
         {
             return t1.value > t2.value;
         }
 
-        public static bool operator <(Temp t1, Temp t2)
+        public static bool operator <(Temperature t1, Temperature t2)
         {
             return t1.value < t2.value;
         }
 
         public override string ToString()
         {
-            return $"{Value}{tt.ToString()}";
+            return $"{Value}{tt}";
         }
     }
 }

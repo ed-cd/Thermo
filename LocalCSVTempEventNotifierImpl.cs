@@ -7,9 +7,9 @@ namespace Thermo
 {
     public class LocalCSVTempEventNotifierImpl : ITempEventNotifier
     {
-        public Action<Temp> OnTempChanged { get; set; }
+        public Action<Temperature> OnTempChanged { get; set; }
 
-        private void onTempChanged(Temp t)
+        private void onTempChanged(Temperature t)
         {
             OnTempChanged?.Invoke(t);
         }
@@ -20,9 +20,9 @@ namespace Thermo
             var d = text.Split(',').Select(tmp =>
             {
                 var data = tmp.Split(' ');
-                Enum.TryParse(data[1], out Temp.TempType tempType);
+                Enum.TryParse(data[1], out Temperature.TempType tempType);
                 TryParse(data[0], out double temp);
-                return new Temp(tempType, temp);
+                return new Temperature(tempType, temp);
             });
 
             foreach (var temp in d)

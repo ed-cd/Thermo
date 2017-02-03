@@ -16,17 +16,24 @@ namespace MyCollections
         // Test the ListWithChangedEvent class.
         public static void Main()
         {
-            var thermometer = new Thermometer(new LocalCSVTempEventNotifierImpl(), (thresholdName, reachedFromAbove) =>
-            {
-
-            },new List<Threshold>());                       
-            var impl = new LocalCSVTempEventNotifierImpl() {OnTempChanged = Console.WriteLine};
+            var impl = new LocalCSVTempEventNotifierImpl();
+            new Thermometer(impl, processThresholdAlert,
+                new List<Threshold>()
+                {
+                    new Threshold()
+                    {
+                        Name = "0 C Both Ways One Time",
+                        TargetTemperature = new Temperature(Temperature.TempType.C, 0),
+                        OneTime = true
+                    }
+                });
             impl.getData(@"..\..\sample_data.csv");
         }
 
-        public static void  processThresholdAlert(string thresholdName, bool reachedFromAbove)
+        private static void processThresholdAlert(string thresholdName, bool reachedFromAbove)
         {
-            
+            var direction = reachedFromAbove ? "above" : "below";
+            Console.WriteLine($"The threshold {thresholdName} has been reached from {direction}");
         }
     }
 }
