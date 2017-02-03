@@ -41,6 +41,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Management" />
     <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
@@ -90,6 +91,7 @@
     <None Include=".git\refs\remotes\origin\HEAD" />
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="sample_data.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".git\objects\info\" />
@@ -98,7 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Solution.cs" />
+    <Compile Include="Temp.cs" />
+    <Compile Include="ITempEventNotifier.cs" />
+    <Compile Include="LocalCSVTempEventNotifierImpl.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="Threshold.cs" />
+    <Compile Include="Thermometer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>

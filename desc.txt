@@ -1,4 +1,4 @@
-﻿Design and implement (in the OO language of your choice) a thermometer class or
+﻿Design and implement a thermometer class or
 classes that read the temperature of some external source (no need to integrate with a
 real source, could be a csv file, array of data points).
 
